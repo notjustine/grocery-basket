@@ -23,18 +23,25 @@ public class dragAndDropIt : MonoBehaviour
         {
             pos = cam.ScreenToWorldPoint(Input.mousePosition);
             transform.position = pos;
+
+            // Check for right mouse button click
+            if (Input.GetMouseButtonDown(1))  // 1 represents right click
+            {
+                // Rotate 90 degrees around the Z axis
+                transform.Rotate(0, 0, -90f);  // Negative for clockwise rotation
+            }
         }
     }
 
     private void OnMouseDown()
     {
-        holding = true;
+        holding = !holding;
     }
 
-    private void OnMouseUp()
-    {
-        holding = false;
-        dragEndedDelegate(this.transform);
-    }
+    //private void OnMouseUp()
+    //{
+    //    holding = false;
+    //    //dragEndedDelegate(this.transform);
+    //}
     
 }
