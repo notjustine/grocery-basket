@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Script tutorial source "https://youtu.be/zY62cJk9i30?feature=shared"
@@ -11,6 +12,8 @@ public class dragAndDropIt : MonoBehaviour
     Camera cam;
     Vector2 pos;
     bool holding;
+
+    private int activeTriggerCount = 0;
 
     void Start()
     {
@@ -35,7 +38,30 @@ public class dragAndDropIt : MonoBehaviour
 
     private void OnMouseDown()
     {
-        holding = !holding;
+        if (activeTriggerCount == 0)
+        {
+            holding = !holding;
+        }
+        else
+        {
+            Debug.Log("Cannot Place!");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Increment the trigger count when entering a trigger
+        activeTriggerCount++;
+
+        //Debug.Log($"Entered trigger with {other.gameObject.name}. Total active triggers: {activeTriggerCount}");
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // Decrement the trigger count when exiting a trigger
+        activeTriggerCount--;
+
+        //Debug.Log($"Exited trigger with {other.gameObject.name}. Total active triggers: {activeTriggerCount}");
     }
 
     //private void OnMouseUp()
@@ -43,5 +69,5 @@ public class dragAndDropIt : MonoBehaviour
     //    holding = false;
     //    //dragEndedDelegate(this.transform);
     //}
-    
+
 }
