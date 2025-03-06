@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 131898255}
   m_Layer: 0
   m_Name: garlic
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04df737cf40e8974eb7c6910463c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holding: 0
 --- !u!61 &131898256
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -691,7 +692,7 @@ GameObject:
   - component: {fileID: 383095037}
   m_Layer: 0
   m_Name: tomato sauce
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -775,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04df737cf40e8974eb7c6910463c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holding: 0
 --- !u!61 &383095038
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1391,7 +1393,7 @@ GameObject:
   - component: {fileID: 672157421}
   m_Layer: 0
   m_Name: spaghetti
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1475,6 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04df737cf40e8974eb7c6910463c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holding: 0
 --- !u!61 &672157422
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1869,7 +1872,7 @@ GameObject:
   - component: {fileID: 1026854547}
   m_Layer: 0
   m_Name: sausage
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1935,7 +1938,7 @@ Transform:
   m_GameObject: {fileID: 1026854544}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22, y: -1.64, z: -5.0046597}
+  m_LocalPosition: {x: -0.07, y: -1.64, z: -5.0046597}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1953,6 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04df737cf40e8974eb7c6910463c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holding: 0
 --- !u!61 &1026854548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1985,7 +1989,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.9992746, y: 0.97967005}
+  m_Offset: {x: -1.1104198, y: 0.97967005}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1996,7 +2000,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.2397678, y: 1.5085716}
+  m_Size: {x: 3.462058, y: 1.5085716}
   m_EdgeRadius: 0
 --- !u!61 &1026854549
 BoxCollider2D:
@@ -2030,7 +2034,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0045178, y: -0.97261214}
+  m_Offset: {x: 1.0747147, y: -0.97261214}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2041,7 +2045,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.3246255, y: 1.4947491}
+  m_Size: {x: 3.4650192, y: 1.4947491}
   m_EdgeRadius: 0
 --- !u!50 &1026854550
 Rigidbody2D:
@@ -2465,6 +2469,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362140520}
+  - component: {fileID: 1362140521}
+  - component: {fileID: 1362140522}
   m_Layer: 0
   m_Name: PseudoGrid
   m_TagString: Untagged
@@ -2481,7 +2487,7 @@ Transform:
   m_GameObject: {fileID: 1362140519}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.09, y: -0.12, z: 2}
+  m_LocalPosition: {x: 4.15, y: -0.12, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2502,6 +2508,64 @@ Transform:
   - {fileID: 147873848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1362140521
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362140519}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.83046687, y: 0.090127945}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1459153, y: 4.2703648}
+  m_EdgeRadius: 0
+--- !u!114 &1362140522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362140519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74ac17cb0a26c34abc95ee44840140f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragAndDrop: {fileID: 0}
 --- !u!1 &1403662876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,7 +3088,7 @@ GameObject:
   - component: {fileID: 1947256355}
   m_Layer: 0
   m_Name: cheese
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3041,6 +3105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04df737cf40e8974eb7c6910463c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holding: 0
 --- !u!212 &1947256356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3347,7 +3412,7 @@ GameObject:
   - component: {fileID: 1993897684}
   m_Layer: 0
   m_Name: seasoning
-  m_TagString: Untagged
+  m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3431,6 +3496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04df737cf40e8974eb7c6910463c2b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holding: 0
 --- !u!61 &1993897685
 BoxCollider2D:
   m_ObjectHideFlags: 0

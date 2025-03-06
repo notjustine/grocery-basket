@@ -6,57 +6,33 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-
-    [SerializeField] private int _width, _height;
-
-    [SerializeField] private Tile _tilePrefab;
-
-    [SerializeField] private Transform _cam;
-
-    private Dictionary<Vector2, Tile> _tiles;
-
+    public dragAndDropIt dragAndDrop;
+    private int activeTriggerCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        GenerateGrid();
+        dragAndDrop = GameObject.FindGameObjectWithTag("Ingredient").GetComponent<dragAndDropIt>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(dragAndDrop.holding);
+
+        if (activeTriggerCount == 8)
+        {
+            Debug.Log("solved!");
+        }
     }
 
-    void GenerateGrid()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _tiles = new Dictionary<Vector2, Tile>();
-
-
-        for (int x = 0; x < _width; x++)
-        {
-            for (int y = 0; y < _height; y++)
-            {
-                var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
-                spawnedTile.name = $"Tile {x} {y}";
-
-                var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                spawnedTile.Init(isOffset);
-
-                _tiles[new Vector2(x, y)] = spawnedTile;
-            }
-        }
-
-        //_cam.transform.position = new Vector3(0, (float)_height / 2 - 0.5f, -10);
+        activeTriggerCount++;
     }
 
-    public Tile GetTileAtPosition(Vector2 pos)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (_tiles.TryGetValue(pos, out var tile))
-        {
-            return tile;
-        }
-
-        return null;
+        activeTriggerCount--;
     }
 }
