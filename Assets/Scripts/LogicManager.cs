@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LogicManager : MonoBehaviour
 {
+
+    //bool readOnce = false;
+
+    public Text helpButton;
+    string helpButtonOpen = "OK";
+    string helpButtonClosed = "Help";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +23,6 @@ public class LogicManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void nextScene()
@@ -40,13 +47,17 @@ public class LogicManager : MonoBehaviour
 
     public void panelActive()
     {
+        //readOnce = true;
+
         if (panel.activeSelf == false)
         {
             panel.SetActive(true);
+            helpButton.text = helpButtonOpen;
         }
         else if (panel.activeSelf == true)
         {
             panel.SetActive(false);
+            helpButton.text = helpButtonClosed;
         } 
 
     }
