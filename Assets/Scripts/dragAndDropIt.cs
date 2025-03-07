@@ -11,7 +11,7 @@ public class dragAndDropIt : MonoBehaviour
     public DragEndedDelegate dragEndedDelegate;
     Camera cam;
     Vector2 pos;
-    bool holding;
+    public bool holding;
 
     private int activeTriggerCount = 0;
 
@@ -22,6 +22,9 @@ public class dragAndDropIt : MonoBehaviour
 
     void Update()
     {
+
+        //Debug.Log(activeTriggerCount);
+
         if (holding)
         {
             pos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -48,18 +51,27 @@ public class dragAndDropIt : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Ingredient"))
+        {
+            activeTriggerCount++;
+        }
         // Increment the trigger count when entering a trigger
-        activeTriggerCount++;
+        //activeTriggerCount++;
 
         //Debug.Log($"Entered trigger with {other.gameObject.name}. Total active triggers: {activeTriggerCount}");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+
+        if (collision.CompareTag("Ingredient"))
+        {
+            activeTriggerCount--;
+        }
         // Decrement the trigger count when exiting a trigger
-        activeTriggerCount--;
+        //activeTriggerCount--;
 
         //Debug.Log($"Exited trigger with {other.gameObject.name}. Total active triggers: {activeTriggerCount}");
     }
