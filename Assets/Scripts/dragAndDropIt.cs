@@ -7,30 +7,39 @@ using UnityEngine;
 
 public class dragAndDropIt : MonoBehaviour
 {
-    public delegate void DragEndedDelegate(Transform transform);
-    public DragEndedDelegate dragEndedDelegate;
+
     Camera cam;
     Vector2 pos;
     bool holding;
 
-    private int activeTriggerCount = 0;
+    int activeTriggerCount = 0;
+
+    Vector3 heldScale;
+    float zOriginal;
+
+    public GameObject xMark;
 
     void Start()
     {
         cam = Camera.main;
+
+        zOriginal = transform.position.z;
+
+        heldScale = transform.localScale;
+        transform.localScale *= 0.95f;
     }
 
     void Update()
     {
-
-        //Debug.Log(activeTriggerCount);
 
         if (holding)
         {
             gameObject.tag = "Held";
 
             pos = cam.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = pos;
+            transform.position = new Vector3((float)pos.x, (float)pos.y, -1f);
+
+            xMark.transform.position = new Vector3((float)pos.x, (float)pos.y, -2f);
 
             // Check for right mouse button click
             if (Input.GetMouseButtonDown(1))  // 1 represents right click
@@ -42,6 +51,11 @@ public class dragAndDropIt : MonoBehaviour
         else
         {
             gameObject.tag = "Placed";
+
+            Vector3 placedPosition = transform.position;
+            placedPosition.z = zOriginal;
+
+            transform.position = placedPosition;
         }
     }
 
@@ -50,10 +64,14 @@ public class dragAndDropIt : MonoBehaviour
         if (activeTriggerCount == 0)
         {
             holding = !holding;
+            changeSize();
         }
         else
         {
             Debug.Log("Cannot Place!");
+            xMark.SetActive(true);
+             
+            Invoke("hideX", 0.3f);
         }
     }
 
@@ -63,10 +81,6 @@ public class dragAndDropIt : MonoBehaviour
         {
             activeTriggerCount++;
         }
-        // Increment the trigger count when entering a trigger
-        //activeTriggerCount++;
-
-        //Debug.Log($"Entered trigger with {other.gameObject.name}. Total active triggers: {activeTriggerCount}");
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -76,16 +90,23 @@ public class dragAndDropIt : MonoBehaviour
         {
             activeTriggerCount--;
         }
-        // Decrement the trigger count when exiting a trigger
-        //activeTriggerCount--;
-
-        //Debug.Log($"Exited trigger with {other.gameObject.name}. Total active triggers: {activeTriggerCount}");
     }
 
-    //private void OnMouseUp()
-    //{
-    //    holding = false;
-    //    //dragEndedDelegate(this.transform);
-    //}
+    private void changeSize()
+    {
+        if (holding)
+        {
+            transform.localScale = heldScale;
+        }
+        else
+        {
+            transform.localScale *= 0.95f;
+        }
+    }
+
+    private void hideX()
+    {
+        xMark.SetActive(false);
+    }
 
 }
