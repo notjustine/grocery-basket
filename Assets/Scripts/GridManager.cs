@@ -6,23 +6,28 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public dragAndDropIt dragAndDrop;
+    Camera cam;
     private int activeTriggerCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        dragAndDrop = GameObject.FindGameObjectWithTag("Ingredient").GetComponent<dragAndDropIt>();
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(dragAndDrop.holding);
+        //Debug.Log(cam.ScreenToWorldPoint(Input.mousePosition));
 
         if (activeTriggerCount == 8)
         {
-            Debug.Log("solved!");
+            GameObject[] heldObjects = GameObject.FindGameObjectsWithTag("Held");
+
+            if (heldObjects.Length == 0) 
+            {
+                Debug.Log("proceed to next level!");
+            }
         }
     }
 

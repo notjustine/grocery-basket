@@ -11,7 +11,7 @@ public class dragAndDropIt : MonoBehaviour
     public DragEndedDelegate dragEndedDelegate;
     Camera cam;
     Vector2 pos;
-    public bool holding;
+    bool holding;
 
     private int activeTriggerCount = 0;
 
@@ -27,6 +27,8 @@ public class dragAndDropIt : MonoBehaviour
 
         if (holding)
         {
+            gameObject.tag = "Held";
+
             pos = cam.ScreenToWorldPoint(Input.mousePosition);
             transform.position = pos;
 
@@ -36,6 +38,10 @@ public class dragAndDropIt : MonoBehaviour
                 // Rotate 90 degrees around the Z axis
                 transform.Rotate(0, 0, -90f);  // Negative for clockwise rotation
             }
+        } 
+        else
+        {
+            gameObject.tag = "Placed";
         }
     }
 
@@ -53,7 +59,7 @@ public class dragAndDropIt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ingredient"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
             activeTriggerCount++;
         }
@@ -66,7 +72,7 @@ public class dragAndDropIt : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Ingredient"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ingredient"))
         {
             activeTriggerCount--;
         }

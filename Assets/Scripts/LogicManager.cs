@@ -17,6 +17,11 @@ public class LogicManager : MonoBehaviour
         
     }
 
+    public void nextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void resetPuzzle()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
